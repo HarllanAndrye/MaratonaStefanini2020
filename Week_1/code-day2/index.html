@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html ng-app="taskList-app" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>App Day 2</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.0/angular.min.js"></script>
+    <script src="app.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+          crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="mx-auto mt-5 jumbotron" style="width: 500px;">
+        <h2 class="font-weight-bold text-center">Task list</h2>
+        <div ng-controller="taskListCtrl as ctrl">
+            <div>
+                Resta(m) <b>{{ctrl.remaining()}}</b> de <b>{{ctrl.tasks.length}}</b> tarefas.
+                [<a href="" ng-click="ctrl.archive()">Arquivar</a>]
+            </div>
+            
+            <ul class="unstyled">
+                <li ng-repeat="task in ctrl.tasks">
+                    <label class="checkbox">
+                        <input type="checkbox" ng-model="task.feito">
+                        <span class="feito-{{task.feito}}">{{task.text}}</span>
+                    </label>
+                </li>
+            </ul>
+
+            <form class="form-inline" ng-submit="ctrl.addTask()">
+                <input type="text" class="form-control" ng-model="ctrl.taskText" size="30" placeholder="Insert your task here">
+                <input class="btn btn-primary ml-2" type="submit" value="Add">
+            </form>
+        </div>
+    </div>
+</body>
+</html>
