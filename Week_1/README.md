@@ -8,6 +8,6 @@
 
 :file_folder: code_day3: Projeto criado com o gerenciador de pacotes npm e uma das dependências é o [Grunt](https://gruntjs.com/) (executor de tarefas JS).
 
-:file_folder: code_day4: Utilizando o AngularJS com rotas e acesso a uma API REST.
+:file_folder: code_day4: Utilizando o AngularJS com rotas e consumindo uma API REST.
 
-:file_folder: code_day5: Continuação do projeto anterior, porém foram acrescentados os teste unitários com o Jasmine (para criar os testes) e Karma (para rodar os testes).
+:file_folder: code_day5: Continuação do projeto anterior, porém foram acrescentados os testes unitários com o Jasmine (para criar os testes) e Karma (para rodar os testes).
