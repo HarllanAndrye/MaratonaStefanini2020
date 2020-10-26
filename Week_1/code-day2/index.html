@@ -14,14 +14,14 @@
 <body>
     <div class="mx-auto mt-5 jumbotron" style="width: 500px;">
         <h2 class="font-weight-bold text-center">Task list</h2>
-        <div ng-controller="taskListCtrl as ctrl">
+        <div ng-controller="taskListCtrl as ctrl"> <!-- ControllerAs -->
             <div>
                 Resta(m) <b>{{ctrl.remaining()}}</b> de <b>{{ctrl.tasks.length}}</b> tarefas.
                 [<a href="" ng-click="ctrl.archive()">Arquivar</a>]
             </div>
             
             <ul class="unstyled">
-                <li ng-repeat="task in ctrl.tasks">
+                <li ng-repeat="task in ctrl.tasks"> <!-- Iteração no array (lista) ctrl.tasks -->
                     <label class="checkbox">
                         <input type="checkbox" ng-model="task.feito">
                         <span class="feito-{{task.feito}}">{{task.text}}</span>

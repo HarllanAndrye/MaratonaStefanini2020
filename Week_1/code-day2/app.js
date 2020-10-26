@@ -8,7 +8,7 @@
     angular.module('taskList-app')
         .controller('taskListCtrl', taskListController);
     
-    taskListController.$inject = ['$scope'];
+    taskListController.$inject = ['$scope']; // Injetando dependência ao controller, nesse caso o $scope
 
     function taskListController($scope) {
         var ctrl = this;
