@@ -2,7 +2,7 @@
     "use strict";
 
     // MODULO
-    angular.module('autoLocadoraApp', ['ngRoute']);
+    angular.module('autoLocadoraApp', ['ngRoute', 'ui.utils.masks']);
 
 
 })();

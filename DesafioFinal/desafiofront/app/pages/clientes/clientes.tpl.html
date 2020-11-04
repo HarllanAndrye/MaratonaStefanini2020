@@ -1,0 +1,22 @@
+<div ng-controller="ClientesController as vm" class="container"  ng-init="vm.getClientes()">
+    <button type="button" class="btn btn-outline-primary" ng-click="vm.go('/cliente')">Novo cliente</button>
+
+    <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Nome</th>
+            <th scope="col">CPF</th>
+            <th scope="col">E-mail</th>
+            <th scope="col">Contato</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="cliente in vm.clientes">
+            <th scope="row">{{cliente.nome}}</th>
+            <td>{{cliente.cpf}}</td>
+            <td>{{cliente.email}}</td>
+            <td>{{cliente.contato}}</td>
+          </tr>
+        </tbody>
+      </table>
+</div>

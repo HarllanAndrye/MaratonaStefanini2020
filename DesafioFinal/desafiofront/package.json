@@ -1,7 +1,7 @@
 {
-    "name": "projeto-semana-angularjs",
+    "name": "front-end",
     "version": "1.0.0",
-    "description": "codigos semana 1 angularjs da maratona de densenvolvimento da stefanini",
+    "description": "Front-end do desafio final",
     "main": "index.html",
     "scripts": {
         "start": "grunt",
@@ -9,12 +9,13 @@
     },
     "repository": {
         "type": "git",
-        "url": "https://gitmaratonadev.stefanini.com.br/maratonadev/projeto-semana-angularjs.git"
+        "url": "https://github.com/HarllanAndrye/MaratonaStefanini2020.git"
     },
-    "author": "MaratonaDev Stefanini",
+    "author": "Harllan Andryê",
     "license": "ISC",
     "dependencies": {
         "angular": "^1.8.1",
+        "angular-input-masks": "^4.4.1",
         "angular-route": "^1.8.1"
     },
     "devDependencies": {

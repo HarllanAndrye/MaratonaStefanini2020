@@ -1,0 +1,91 @@
+<div ng-controller="ClienteController as vm" class="container">
+    <form name="clienteForm" ng-submit="vm.enviarDadosCliente()">
+        <div class="form-row">
+            <div class="form-group col-md-8">
+                <label for="nome">Nome</label>
+                <input type="text" name="nome" 
+                    ng-class="clienteForm.nome.$invalid && clienteForm.nome.$dirty ? 'is-invalid' : ''" 
+                    class="form-control" id="nome" placeholder="Nome" ng-model="vm.form.nome"
+                    ng-minlength="3" ng-maxlength="100" pattern="[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$" required>
+                <small id="emailHelp" class="form-text text-muted">Apenas letras e espaços.</small>
+                <div ng-show="clienteForm.nome.$error.minlength" class="invalid-feedback">
+                    Nome deve ter no mínimo 3 caracteres.
+                </div>
+            </div>
+            <div class="form-group col-md-4">
+                <label for="cpf">CPF</label>
+                <input type="text" class="form-control" name="cpf" id="cpf" ng-model="vm.form.cpf" ui-br-cpf-mask required>
+                <small id="emailHelp" class="form-text text-muted">Apenas números (sem pontos ou traço).</small>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-8">
+                <label for="exampleInputEmail1">E-mail</label>
+                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                    placeholder="E-mail do cliente" ng-model="vm.form.email" required>
+            </div>
+            <div class="form-group col-md-4">
+                <label for="contato">Contato (telefone)</label>
+                <input type="text" name="telefone" class="form-control" id="contato" placeholder="Número de telefone fixo ou celular"
+                    ng-model="vm.form.contato" ui-br-phone-number-mask="areaCode">
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-2">
+                <label for="enderecoCep">CEP</label>
+                <input type="text" class="form-control" name="cep"
+                    ng-class="clienteForm.cep.$invalid && clienteForm.cep.$dirty ? 'is-invalid' : ''" 
+                    id="enderecoCep" ng-model="vm.form.endereco.cep" ui-br-cep-mask required>
+            </div>
+            <div class="form-group col-md-10 d-flex align-items-end">
+                <button type="button" class="btn btn-outline-primary" ng-click="vm.consultaCEP()">Consultar CEP</button>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-8">
+                <label for="enderecoLogr">Logradouro</label>
+                <input type="text" class="form-control" id="enderecoLogr" placeholder="Rua, AV, ..."
+                    ng-model="vm.form.endereco.logradouro">
+            </div>
+            <div class="form-group col-md-4">
+                <label for="enderecoCompl">Complemento</label>
+                <input type="text" class="form-control" id="enderecoCompl" ng-model="vm.form.endereco.complemento">
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label for="enderecoBairro">Bairro</label>
+                <input type="text" class="form-control" 
+                    ng-class="clienteForm.bairro.$invalid && clienteForm.bairro.$dirty ? 'is-invalid' : ''" 
+                    id="enderecoBairro" ng-model="vm.form.endereco.bairro" name="bairro" required>
+                <div ng-show="clienteForm.bairro.$invalid && clienteForm.bairro.$dirty" class="invalid-feedback">
+                    Preencha o campo bairro.
+                </div>
+            </div>
+            <div class="form-group col-md-4">
+                <label for="enderecoCid">Cidade</label>
+                <input type="text" ng-class="clienteForm.cidade.$invalid && clienteForm.cidade.$dirty ? 'is-invalid' : ''" 
+                    class="form-control" id="enderecoCid" ng-model="vm.form.endereco.cidade" name="cidade" 
+                    ng-required="true">
+                <div ng-show="clienteForm.cidade.$invalid && clienteForm.cidade.$dirty" class="invalid-feedback">
+                    Preencha o campo cidade.
+                </div>
+            </div>
+            <div class="form-group col-md-4">
+                <label for="ufSelect">UF</label>
+                <select class="form-control" 
+                    ng-class="clienteForm.enderecoUF.$invalid && clienteForm.enderecoUF.$dirty ? 'is-invalid' : ''"
+                    name="enderecoUF" id="ufSelect" ng-model="vm.form.endereco.uf" required>
+                    <option value="">Selecione o estado</option>
+                    <option ng-repeat="estado in vm.estados" value="{{estado.sigla}}">{{estado.nome}}</option>
+                </select>
+                <div ng-show="clienteForm.enderecoUF.$invalid && clienteForm.enderecoUF.$dirty" class="invalid-feedback">
+                    Preencha o campo UF.
+                </div>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary" ng-disabled="clienteForm.$invalid">Cadastrar</button>
+    </form>
+</div>

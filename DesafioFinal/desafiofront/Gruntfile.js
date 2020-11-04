@@ -25,6 +25,10 @@ function configGrunt(grunt) {
                 src: [
                     'angular/angular.js',
                     'angular-route/angular-route.js',
+                    'angular-input-masks/releases/angular-input-masks-standalone.min.js'
+                    //'angular-input-masks/releases/angular-input-masks.br.min.js'
+                    //'angular-input-masks/src/br/**/*.js',
+                    //'angular-input-masks/src/global/number/number.js'
                 ],
                 dest: vendorDir
             }

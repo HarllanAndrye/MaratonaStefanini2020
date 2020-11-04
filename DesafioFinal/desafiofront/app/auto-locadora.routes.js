@@ -14,7 +14,10 @@
                 templateUrl: 'home.tpl.html',
             })
             .when('/clientes', {
-                templateUrl: 'cliente.tpl.html',
+                templateUrl: 'pages/clientes/clientes.tpl.html',
+            })
+            .when('/cliente', {
+                templateUrl: 'pages/cliente-cadastro/cliente.tpl.html',
             })
             .when('/alugar', {
                 templateUrl: 'alugar.tpl.html',
