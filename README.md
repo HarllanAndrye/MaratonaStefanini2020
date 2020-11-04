@@ -13,7 +13,6 @@ Cronograma do evento:
 \
 \
 \
-
 <p align="center">
   <img src="images/maratona.png" width="20%"/>
 </p>
