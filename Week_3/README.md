@@ -12,15 +12,15 @@ Assuntos tratados na semana:
 * Serviços REST;
 * Quarkus;
 * Docker;
-* Kubernetes
+* Kubernetes;
 * Banco de dados:
 	* JPA - Java Persistence API
 	* JDBC H2 e Hibernate ORM
 	* [Panache](https://quarkus.io/guides/hibernate-orm-panache)
-* Swagger (OpenAPI): Usado para gerar uma documentação da API
+* Swagger (OpenAPI): Usado para gerar uma documentação da API;
 	* End-point localhost:8080/swagger-ui
-* [OpenTracing](https://quarkus.io/guides/opentracing) e [Jaeger](https://www.jaegertracing.io/docs/1.20/getting-started/)
-* Autenticação (quarkus authentication)
+* [OpenTracing](https://quarkus.io/guides/opentracing) e [Jaeger](https://www.jaegertracing.io/docs/1.20/getting-started/);
+* Autenticação (quarkus authentication).
 	* [Quarkus - Security Architecture and guides](https://quarkus.io/guides/security)
 
 
@@ -32,7 +32,7 @@ Fluxo da API:
 
 Rodar o projeto no terminal
 
-	(produção) `./mvnw quarkus:dev`
+	(produção) ./mvnw quarkus:dev
 
-	(teste) `./mvnw quarkus:dev -Dquarkus.profile=test`
+	(teste) ./mvnw quarkus:dev -Dquarkus.profile=test
 
