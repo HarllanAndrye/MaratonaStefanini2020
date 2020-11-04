@@ -13,5 +13,5 @@ Cronograma do evento:
 
 
 <p align="center">
-  <img src="images/maratona.png" width="50%"/>
+  <img src="images/maratona.png" width="20%"/>
 </p>
