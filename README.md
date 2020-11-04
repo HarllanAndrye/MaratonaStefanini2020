@@ -10,4 +10,8 @@ Cronograma do evento:
 
 > 19/10 à 24/10: [Quarkus](https://quarkus.io/), [Docker](https://www.docker.com/), [Kubernetes](https://kubernetes.io/) e Banco de Dados.
 
-![maratonastefanini2020](images/maratona.png)
+
+
+<p align="center">
+  <img src="images/maratona.png" width="50%"/>
+</p>

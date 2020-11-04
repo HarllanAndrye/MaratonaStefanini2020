@@ -3,6 +3,11 @@
 > 19/10 à 24/10: Quarkus, Docker, Kubernetes e Banco de Dados.
 
 
+:file_folder: todolist: Projeto que consiste em um serviço REST usando os métodos HTTP (GET, POST, PUT e DELETE).
+Este projeto é um "To Do List", onde há tarefas com status TODO, DOING, DONE e BLOCK. Pode ser utilizado com um front-end tipo o Trello.
+
+---
+
 Assuntos tratados na semana:
 * Serviços REST;
 * Quarkus;
@@ -19,14 +24,15 @@ Assuntos tratados na semana:
 	* [Quarkus - Security Architecture and guides](https://quarkus.io/guides/security)
 
 
-:file_folder: todolist: Projeto que consiste em um serviço REST usando os métodos HTTP (GET, POST, PUT e DELETE).
-Este projeto é um "To Do List", onde há tarefas com status TODO, DOING, DONE e BLOCK. Pode ser utilizado com um front-end tipo o Trello.
 
+Fluxo da API:
 
-- Fluxo da API:
 	Rest -> Service -> DAO
 
-- Rodar o projeto no terminal
+
+Rodar o projeto no terminal
+
 	(produção) `./mvnw quarkus:dev`
+
 	(teste) `./mvnw quarkus:dev -Dquarkus.profile=test`
 
