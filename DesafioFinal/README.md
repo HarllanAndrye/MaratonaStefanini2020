@@ -4,8 +4,7 @@
 
 O desafio tinha um prazo para entrega, no qual iniciou às 18:30 e poderia ser entregue até às 23:59 do mesmo dia (31/10/2020).
 
-<br>
----
+
 ## Desafio
 
 Uma locadora de automóveis deseja continuar o desenvolvimento de um sistema de locação de veículos.
