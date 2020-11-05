@@ -37,6 +37,6 @@ public class CarroDao {
 	}
 
 	public List<Carro> listarDisponiveis(List<String> placas) {
-		return Carro.find("placa NOT IN (?1)", placas).list();
+		return Carro.find("placa NOT IN (?1) ORDER BY modelo, marca ASC", placas).list();
 	}
 }
