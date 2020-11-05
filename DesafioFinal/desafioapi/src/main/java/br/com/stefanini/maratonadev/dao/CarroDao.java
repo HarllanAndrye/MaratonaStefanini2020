@@ -35,4 +35,8 @@ public class CarroDao {
 	public boolean excluir(String placa) {
 		return Carro.delete("placa", placa) > 0;
 	}
+
+	public List<Carro> listarDisponiveis(List<String> placas) {
+		return Carro.find("placa NOT IN (?1)", placas).list();
+	}
 }

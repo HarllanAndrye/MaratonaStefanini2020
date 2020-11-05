@@ -10,16 +10,27 @@
 
         return {
             listar: listar,
+            listarCarrosDisponiveis: listarCarrosDisponiveis,
             cadastrarCliente: cadastrarCliente,
             listarClientes: listarClientes,
+            listarClientesSemAluguel: listarClientesSemAluguel,
             cadastrarAluguel: cadastrarAluguel,
-            consultaCEP: consultaCEP
+            consultaCEP: consultaCEP,
+            listarAlugueis: listarAlugueis
         }
 
         // ======================================
 
         function listar() {
             return $http.get(constantes.URL_BASE + '/carro')
+                .then(function (response) {
+                    return response.data;
+                })
+                .catch(helper.sendError);
+        }
+
+        function listarCarrosDisponiveis() {
+            return $http.get(constantes.URL_BASE + '/carro/disponiveis')
                 .then(function (response) {
                     return response.data;
                 })
@@ -44,8 +55,24 @@
                 .catch(helper.sendError);
         }
 
+        function listarClientesSemAluguel() {
+            return $http.get(constantes.URL_BASE + '/cliente/semAluguel')
+                .then(function (response) {
+                    return response.data;
+                })
+                .catch(helper.sendError);
+        }
+
         function cadastrarAluguel(params) {
-            return $http.post(constantes.URL_BASE + '/cliente/aluguel', params)
+            return $http.post(constantes.URL_BASE + '/aluguel', params)
+                .then(function (response) {
+                    return response.data;
+                })
+                .catch(helper.sendError);
+        }
+
+        function listarAlugueis() {
+            return $http.get(constantes.URL_BASE + '/aluguel')
                 .then(function (response) {
                     return response.data;
                 })

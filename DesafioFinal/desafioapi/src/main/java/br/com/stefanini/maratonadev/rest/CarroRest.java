@@ -34,7 +34,7 @@ public class CarroRest {
     @GET
     @Operation(summary = "Listar carros",
             description = "Lista de carros com ano de compra, marca,modelo e placa")
-    @APIResponse(responseCode = "201",
+    @APIResponse(responseCode = "200",
             description = "carro",
             content = {
                     @Content(mediaType =  "application/json",
@@ -65,6 +65,24 @@ public class CarroRest {
 				.entity(service.listarPorPlaca(placa))
 				.build();
 	}
+    
+    @GET
+    @Path("disponiveis")
+    @Operation(summary = "Listar carros disponíveis",
+            description = "Lista de carros que estão disponíveis para locação.")
+    @APIResponse(responseCode = "200",
+            description = "carros disponíveis",
+            content = {
+                    @Content(mediaType =  "application/json",
+                            schema = @Schema(implementation = CarroDto.class))
+            }
+    )
+    public Response listarDisponiveis(){
+        return Response
+                .status(Response.Status.OK)
+                .entity(service.listarDisponiveis())
+                .build();
+    }
     
     @POST
 	@Operation(summary = "Incluir novo carro",

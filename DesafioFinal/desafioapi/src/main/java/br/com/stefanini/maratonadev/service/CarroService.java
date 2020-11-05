@@ -1,7 +1,9 @@
 package br.com.stefanini.maratonadev.service;
 
+import br.com.stefanini.maratonadev.dao.AluguelDao;
 import br.com.stefanini.maratonadev.dao.CarroDao;
 import br.com.stefanini.maratonadev.dto.CarroDto;
+import br.com.stefanini.maratonadev.model.Aluguel;
 import br.com.stefanini.maratonadev.model.Carro;
 import br.com.stefanini.maratonadev.model.parser.CarroParser;
 
@@ -24,6 +26,9 @@ public class CarroService {
     CarroDao dao;
 	
 	@Inject
+	AluguelDao daoAluguel;
+	
+	@Inject
 	Validator validator;
 
 
@@ -33,6 +38,20 @@ public class CarroService {
         		.map(CarroParser.get()::dto)
         		.collect(Collectors.toList());
     }
+    
+    public List<CarroDto> listarDisponiveis() {
+    	List<String> placas = new ArrayList<>();
+		
+		List<Aluguel> alugueis = daoAluguel.listarAlugueis();
+		alugueis.stream()
+			.forEach( al -> placas.add(al.getPlacaCarro()) );
+		
+		return dao
+				.listarDisponiveis(placas)
+				.stream()
+				.map(CarroParser.get()::dto)
+				.collect(Collectors.toList());
+	}
 
     @Transactional(rollbackOn = Exception.class)
 	public String incluir(CarroDto dto) {
@@ -98,4 +117,5 @@ public class CarroService {
 		
 		return errorsList;
 	}
+
 }

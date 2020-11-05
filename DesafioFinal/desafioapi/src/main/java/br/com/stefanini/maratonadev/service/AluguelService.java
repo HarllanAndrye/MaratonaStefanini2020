@@ -11,7 +11,6 @@ import javax.inject.Inject;
 import javax.transaction.Transactional;
 import javax.validation.ConstraintViolation;
 import javax.validation.Validator;
-import javax.ws.rs.NotAllowedException;
 import javax.ws.rs.NotFoundException;
 
 import br.com.stefanini.maratonadev.dao.AluguelDao;
@@ -41,12 +40,12 @@ public class AluguelService {
 	}
 
 	@Transactional(rollbackOn = Exception.class)
-	public void cadastrarAluguel(AluguelDto dto) {
+	public String cadastrarAluguel(AluguelDto dto) {
 		// Verificar se cliente ou carro já estão no BD
 		if (dao.findByClienteId(dto.getClienteId()) != null) {
-			throw new NotAllowedException("Cliente já possui carro alugado!");
+			return "Cliente já possui carro alugado!";
 		} else if (dao.findByPlacaCarro(dto.getPlacaCarro()) != null) {
-			throw new NotAllowedException("Carro já está alugado!");
+			return "Carro já está alugado!";
 		}
 		
 		Aluguel al = AluguelParser.get().returnEntity(dto);
@@ -57,6 +56,8 @@ public class AluguelService {
 		historico.setDataAluguel(al.getDataAluguel());
 		
 		dao.cadastrarAluguelEHistorico(al, historico);
+		
+		return "";
 	}
 
 	public List<HistoricoAluguelDto> listarAlugueisCliente(Long id) {

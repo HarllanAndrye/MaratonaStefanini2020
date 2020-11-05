@@ -49,6 +49,24 @@ public class ClienteRest {
 	}
 	
 	@GET
+	@Path("/semAluguel")
+	@Operation(summary = "Listar clientes sem carro alugado",
+		description = "Listar clientes que não possuem carro alugado.")
+	@APIResponse(responseCode = "200",
+		description = "lista de clientes sem carro",
+		content = {
+			@Content(mediaType =  "application/json",
+			schema = @Schema(implementation = ClienteDto.class, type = SchemaType.ARRAY))
+			}
+	)
+	public Response listarClientesSemAluguel() {
+		return Response
+				.status(Status.OK)
+				.entity(service.listarClientesSemAluguel())
+				.build();
+	}
+	
+	@GET
 	@Path("{id}")
 	@Operation(summary = "Listar cliente por Id",
 		description = "Listar cliente por ID")

@@ -28,4 +28,8 @@ public class ClienteDao {
 		return Cliente.find("cpf", cpf).firstResult() != null;
 	}
 
+	public List<Cliente> listarClientesSemAluguel(List<Long> ids) {
+		return Cliente.find("id NOT IN (?1)", ids).list();
+	}
+
 }

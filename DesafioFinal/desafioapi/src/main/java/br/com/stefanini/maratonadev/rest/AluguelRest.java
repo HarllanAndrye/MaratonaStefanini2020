@@ -88,7 +88,19 @@ public class AluguelRest {
 					.build();
 		}
 		
-		service.cadastrarAluguel(dto);
+		String retornoErro = service.cadastrarAluguel(dto);
+		
+		if (!retornoErro.isEmpty()) {
+			String msg = "{"
+					+ "\"error\": \"true\","
+					+ "\"message\": \"" + retornoErro + "\""
+							+ "}";
+			
+			return Response
+					.status(Status.BAD_REQUEST)
+					.entity(msg)
+					.build();
+		}
 		
 		return Response
 				.status(Status.CREATED)
