@@ -11,12 +11,16 @@
         return {
             listar: listar,
             listarCarrosDisponiveis: listarCarrosDisponiveis,
+            getCarro: getCarro,
             cadastrarCliente: cadastrarCliente,
             listarClientes: listarClientes,
             listarClientesSemAluguel: listarClientesSemAluguel,
+            getCliente: getCliente,
+            getAlugueisCliente: getAlugueisCliente,
             cadastrarAluguel: cadastrarAluguel,
             consultaCEP: consultaCEP,
-            listarAlugueis: listarAlugueis
+            listarAlugueis: listarAlugueis,
+            devolverCarro: devolverCarro
         }
 
         // ======================================
@@ -31,6 +35,14 @@
 
         function listarCarrosDisponiveis() {
             return $http.get(constantes.URL_BASE + '/carro/disponiveis')
+                .then(function (response) {
+                    return response.data;
+                })
+                .catch(helper.sendError);
+        }
+
+        function getCarro(placa) {
+            return $http.get(constantes.URL_BASE + '/carro/' + placa)
                 .then(function (response) {
                     return response.data;
                 })
@@ -63,6 +75,22 @@
                 .catch(helper.sendError);
         }
 
+        function getCliente(id) {
+            return $http.get(constantes.URL_BASE + '/cliente/' + id)
+                .then(function (response) {
+                    return response.data;
+                })
+                .catch(helper.sendError);
+        }
+
+        function getAlugueisCliente(clienteId) {
+            return $http.get(constantes.URL_BASE + '/aluguel/cliente/' + clienteId)
+                .then(function (response) {
+                    return response.data;
+                })
+                .catch(helper.sendError);
+        }
+
         function cadastrarAluguel(params) {
             return $http.post(constantes.URL_BASE + '/aluguel', params)
                 .then(function (response) {
@@ -75,6 +103,14 @@
             return $http.get(constantes.URL_BASE + '/aluguel')
                 .then(function (response) {
                     return response.data;
+                })
+                .catch(helper.sendError);
+        }
+
+        function devolverCarro(params) {
+            return $http.put(constantes.URL_BASE + '/aluguel/devolver', params)
+                .then(function (response) {
+                    return response.status; //data
                 })
                 .catch(helper.sendError);
         }

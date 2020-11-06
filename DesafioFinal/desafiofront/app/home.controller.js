@@ -13,6 +13,7 @@
         /* ***************    FUNÇÕES EXECUTADAS NA VIEW (HMTL)    **************** */
         vm.go = helper.go;
         vm.iniciar = iniciar;
+        vm.alugarCarro = alugarCarro;
 
         function iniciar() {
             return vm.listarCarros();
@@ -28,6 +29,10 @@
                     vm.listaCarros = _listaCarros;
                     helper.rootScopeApply();
                 });
+        }
+
+        function alugarCarro(placa) {
+            helper.go('/alugar/carro/' + placa);
         }
 
     }

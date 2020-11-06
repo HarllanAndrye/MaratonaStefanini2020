@@ -11,6 +11,8 @@
        
         vm.go = helper.go;
         vm.getClientes = getClientes;
+        vm.alugarCarro = alugarCarro;
+        vm.verHistorico = verHistorico;
 
         function getClientes() {
             return autoLocadoraService.listarClientes()
@@ -20,6 +22,14 @@
                 vm.clientes = _clientes;
             }
             
+        }
+
+        function alugarCarro(clienteId) {
+            helper.go('/alugar/cliente/' + clienteId);
+        }
+
+        function verHistorico(clienteId) {
+            helper.go('/cliente/alugueis/' + clienteId);
         }
     }
 

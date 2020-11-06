@@ -23,7 +23,7 @@
                         <strong>Ano: </strong> {{carro.ano}} &nbsp; | &nbsp;
                         <strong>Placa: </strong> {{carro.placa | placaComHifen}}
                     </p>
-                    <a ng-click="" class="btn btn-primary text-center">Alugar</a>
+                    <a ng-click="vm.alugarCarro(carro.placa)" class="btn btn-primary text-center">Alugar</a>
                 </div>
             </div>
         </div>

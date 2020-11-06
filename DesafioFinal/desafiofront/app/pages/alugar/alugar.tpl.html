@@ -1,0 +1,33 @@
+<div ng-controller="AlugarController as vm" class="container" ng-init="vm.iniciar()">
+    <form ng-submit="vm.enviarDadosAluguel()" name="aluguelForm">
+        <div class="form-row">
+            <div class="form-grou col-md-6">
+                <label for="clienteSelect">Cliente</label>
+                <select class="form-control" id="clienteSelect" ng-model="vm.form.clienteId" required>
+                    <option value="">Selecione o cliente</option>
+                    <option ng-repeat="cliente in vm.listaClientes" value="{{cliente.id}}">{{cliente.nome | capitalize}} | CPF:
+                        {{cliente.cpf}}</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="carroSelect">Carro</label>
+                <select class="form-control" id="carroSelect" ng-model="vm.form.placaCarro" required>
+                    <option value="">Selecione o carro</option>
+                    <option ng-repeat="carro in vm.listaCarros" value="{{carro.placa}}">{{carro.marca}} |
+                        {{carro.modelo}} | {{carro.ano}} | Placa: {{carro.placa | placaComHifen}}</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-2">
+                <label for="diasSelect">Devolver em:</label>
+                <select class="form-control" id="diasSelect" ng-model="vm.form.devolucaoEmDias">
+                    <option ng-repeat="qtd in vm.qtdDias" value="{{qtd.number}}">{{qtd.number}} {{qtd.text}}</option>
+                </select>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary" ng-disabled="aluguelForm.$invalid">Cadastrar</button>
+    </form>
+</div>

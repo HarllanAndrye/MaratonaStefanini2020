@@ -108,7 +108,7 @@ public class AluguelRest {
 	}
 	
 	@PUT
-	@Path("devolver/{idCliente}")
+	@Path("devolver")
 	@Operation(summary = "Alterar aluguel",
 		description = "Alterar aluguel.")
 	@APIResponse(responseCode = "201",
@@ -118,8 +118,17 @@ public class AluguelRest {
 			schema = @Schema(implementation = AluguelDto.class))
 			}
 	)
-	public Response devolverVeiculo(@PathParam("idCliente") Long idCliente) {
-		if (!service.devolverVeiculo(idCliente)) {
+	public Response devolverVeiculo(AluguelDto dto) {
+		List<String> errors = service.validateDto(dto); // Validando os dados do dto
+    	
+		if (!errors.isEmpty()) {
+			return Response
+					.status(Status.BAD_REQUEST)
+					.entity("{\"error\": \"" + errors.get(0) + "\"}")
+					.build();
+		}
+		
+		if (!service.devolverVeiculo(dto.getClienteId())) {
 			return Response
 					.status(Status.INTERNAL_SERVER_ERROR)
 					.entity("{\"error\": \"Ocorreu um erro ao tentar devolver o veículo!\"}")

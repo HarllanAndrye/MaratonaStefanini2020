@@ -1,0 +1,29 @@
+<div ng-controller="AlugueisController as vm" class="container" ng-init="vm.getAlugueis()">
+  <button type="button" class="btn btn-outline-primary" ng-click="vm.go('/alugar')">Alugar</button>
+
+  <h2 class="mt-5">Carros alugados</h2>
+  <hr class="mt-1 bg-primary">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Cliente ID</th>
+        <th scope="col">Placa do carro</th>
+        <th scope="col">Data do aluguel</th>
+        <th scope="col">Devolvolução em (dias)</th>
+        <th scope="col">Devolver</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="aluguel in vm.alugueis">
+        <th scope="row">{{aluguel.clienteId}}</th>
+        <td>{{aluguel.placaCarro}}</td>
+        <td>{{aluguel.dataAluguel}}</td>
+        <td>{{aluguel.devolucaoEmDias}}</td>
+        <td>
+          <button class="btn" ng-click="vm.devolverCarro(aluguel)"><i class="material-icons left">beenhere</i></button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>

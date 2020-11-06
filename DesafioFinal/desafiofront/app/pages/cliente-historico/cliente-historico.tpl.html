@@ -1,0 +1,22 @@
+<div ng-controller="ClienteHistoricoController as vm" class="container" ng-init="vm.getAlugueisCliente()">  
+    <h2 class="mt-5">Histórico de alugueis</h2>
+    <hr class="mt-1 bg-primary">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">Cliente Id</th>
+          <th scope="col">Placa do carro</th>
+          <th scope="col">Data do aluguel</th>
+          <th scope="col">Data da devolução</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="aluguel in vm.alugueisCliente">
+          <th scope="row">{{aluguel.clienteId}}</th>
+          <th scope="row">{{aluguel.placaCarro}}</th>
+          <td>{{aluguel.dataAluguel}}</td>
+          <td>{{aluguel.dataDevolucao}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
