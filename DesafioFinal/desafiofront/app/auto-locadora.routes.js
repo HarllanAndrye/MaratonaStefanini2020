@@ -13,6 +13,9 @@
             .when('/home', {
                 templateUrl: 'home.tpl.html',
             })
+            .when('/carro/cadastro', {
+                templateUrl: 'pages/carro-cadastro/carro-form.tpl.html',
+            })
             .when('/clientes', {
                 templateUrl: 'pages/clientes/clientes.tpl.html',
             })

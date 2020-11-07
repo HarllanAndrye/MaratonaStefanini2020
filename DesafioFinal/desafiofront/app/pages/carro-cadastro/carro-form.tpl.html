@@ -1,0 +1,40 @@
+<div ng-controller="CarroController as vm" class="container">
+    <form name="carroForm" ng-submit="vm.cadastrar()">
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="modeloId">Modelo</label>
+                <input type="text" name="modelo"
+                    ng-class="carroForm.modelo.$invalid && carroForm.modelo.$dirty ? 'is-invalid' : ''"
+                    class="form-control" id="modeloId" ng-model="vm.form.modelo" required>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="marcaId">Marca</label>
+                <input type="text" name="marca" class="form-control"
+                    ng-class="carroForm.marca.$invalid && carroForm.marca.$dirty ? 'is-invalid' : ''" id="marcaId"
+                    ng-model="vm.form.marca" required>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-3">
+                <label for="anoId">Ano</label>
+                <input type="text" name="ano" class="form-control"
+                    ng-class="carroForm.ano.$invalid && carroForm.ano.$dirty ? 'is-invalid' : ''" id="anoId"
+                    ng-model="vm.form.ano" ui-date-mask="YYYY" parse="false" required>
+            </div>
+            <div class="form-group col-md-3">
+                <label for="placaId">Placa</label>
+                <input type="text" name="placa" class="form-control" id="placaId"
+                    ng-class="carroForm.placa.$invalid && carroForm.placa.$dirty ? 'is-invalid' : ''"
+                    ng-minlength="7" ng-maxlength="7"
+                    ng-model="vm.form.placa" required>
+                    <small id="placaHelp" class="form-text text-muted">Sem traço, apenas letras e números.</small>
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary" ng-disabled="carroForm.$invalid">Cadastrar</button>
+    </form>
+</div>

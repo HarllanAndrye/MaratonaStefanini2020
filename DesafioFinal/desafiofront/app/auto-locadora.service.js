@@ -12,6 +12,7 @@
             listar: listar,
             listarCarrosDisponiveis: listarCarrosDisponiveis,
             getCarro: getCarro,
+            cadastrarCarro: cadastrarCarro,
             cadastrarCliente: cadastrarCliente,
             listarClientes: listarClientes,
             listarClientesSemAluguel: listarClientesSemAluguel,
@@ -43,6 +44,14 @@
 
         function getCarro(placa) {
             return $http.get(constantes.URL_BASE + '/carro/' + placa)
+                .then(function (response) {
+                    return response.data;
+                })
+                .catch(helper.sendError);
+        }
+
+        function cadastrarCarro(params) {
+            return $http.post(constantes.URL_BASE + '/carro', params)
                 .then(function (response) {
                     return response.data;
                 })

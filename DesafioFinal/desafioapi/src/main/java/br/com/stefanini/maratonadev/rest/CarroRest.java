@@ -98,17 +98,35 @@ public class CarroRest {
     	List<String> errors = service.validateDto(dto); // Validando os dados do dto
     	
 		if (!errors.isEmpty()) {
+			String msg = "{"
+					+ "\"error\": \"true\","
+					+ "\"message\": \"" + errors.get(0) + "\""
+							+ "}";
+			
+			//.entity("{\"error\": \"" + errors.get(0) + "\"}")
 			return Response
 					.status(Status.BAD_REQUEST)
-					.entity("{\"error\": \"" + errors.get(0) + "\"}")
+					.entity(msg)
 					.build();
 		}
     	
-		String placa = service.incluir(dto);
+		String retornoErro = service.incluir(dto);
 		
+		if (!retornoErro.isEmpty()) {
+			String msg = "{"
+					+ "\"error\": \"true\","
+					+ "\"message\": \"" + retornoErro + "\""
+							+ "}";
+			
+			return Response
+					.status(Status.BAD_REQUEST)
+					.entity(msg)
+					.build();
+		}
+		
+		//.entity("Carro cadastrado com sucesso.")
 		return Response
 				.status(Status.CREATED)
-				.entity("Carro com a placa " + placa + " cadastrado com sucesso.")
 				.build();
 	}
     

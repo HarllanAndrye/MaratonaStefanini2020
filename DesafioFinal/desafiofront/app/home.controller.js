@@ -27,7 +27,7 @@
             return service.listar()
                 .then(function (_listaCarros) {
                     vm.listaCarros = _listaCarros;
-                    helper.rootScopeApply();
+                    //helper.rootScopeApply();
                 });
         }
 

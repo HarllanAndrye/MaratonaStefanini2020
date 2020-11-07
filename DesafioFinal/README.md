@@ -44,14 +44,14 @@ Campo **CPF**:
 Campo **Endereço** (CEP, Logradouro, Complemento, Bairro, Cidade e UF):
 
 	* Obrigatório preenchimento de CEP, bairro, cidade e UF;
-	* Deve estar integrado com um serviço de consulta de CEP (Sugestão: http://viacep.com.br);
+	* Deve estar integrado com um serviço de consulta de CEP (Sugestão: https://viacep.com.br/);
 	* O usuário pode alterar os dados que retornam do serviço de consulta.
 
 Campo **E-mail**:
 
 	* Deve ser um e-mail válido.
 
-Campo **Conatato**:
+Campo **Contato**:
 
 	* Deve ser um telefone residêncial ou celular válido.
 
@@ -62,7 +62,7 @@ Campo **Conatato**:
 Para cada cliente, aplicar as seguintes regras:
 
 * Não permitir dois clientes com mesmo CPF;
-* O nome não deve ter mais que 100 carecteres ou menos que 3.
+* O nome não deve ter mais que 100 caracteres ou menos que 3.
 
 <br>
 
@@ -81,13 +81,13 @@ Para cada cliente, aplicar as seguintes regras:
 
 ## Desafio bônus de implementação
 
-[] Teste de unidade no front-end e back-end com 100% de cobertura.
+- [ ] Teste de unidade no front-end e back-end com 100% de cobertura.
 
-[] Evoluir a funcionalidade de "listar carros" para diferenciar carros disponíveis dos carros alugados e exibir o atual locatário.
+- [ ] Evoluir a funcionalidade de "listar carros" para diferenciar carros disponíveis dos carros alugados e exibir o atual locatário.
 
-[] Evoluir a funcionalidade de "listar clientes" para indicar se ele tem um carro alugado e qual modelo.
+- [ ] Evoluir a funcionalidade de "listar clientes" para indicar se ele tem um carro alugado e qual modelo.
 
-[x] Criar a funcionalidade "exibir histórico do cliente" e apresentar o histórico de todos os carros que o cliente já alugou.
+- [x] Criar a funcionalidade "exibir histórico do cliente" e apresentar o histórico de todos os carros que o cliente já alugou.
 
 
 

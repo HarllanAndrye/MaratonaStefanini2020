@@ -57,18 +57,23 @@ public class CarroService {
 	public String incluir(CarroDto dto) {
 		Carro carro = CarroParser.get().entity(dto);
 		
+		String retorno = "";
+		
 		// Não inserir carro já existente (mesma placa)
 		if(dao.findByPlaca(carro.getPlaca()) != null) {
-			throw new NotFoundException();
+			// Formatando a placa
+			String placa = carro.getPlaca();
+			StringBuilder stringBuilder = new StringBuilder(placa);
+	        stringBuilder.insert(placa.length() - 4, '-');
+	        
+			return "Carro com a placa " + stringBuilder.toString() + " já está cadastrado!";
 		}
 		
-		String placa = dao.incluir(carro);
+		if (dao.incluir(carro).isEmpty()) {
+			retorno = "Erro ao tentar inserir registro no banco de dados!";
+		}
 		
-		// Formatando a placa
-		StringBuilder stringBuilder = new StringBuilder(placa);
-        stringBuilder.insert(placa.length() - 4, '-');
-		
-		return stringBuilder.toString();
+		return retorno;
 	}
 
     @Transactional(rollbackOn = Exception.class)
