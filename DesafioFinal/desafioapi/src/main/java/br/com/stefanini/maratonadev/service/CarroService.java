@@ -12,7 +12,6 @@ import javax.inject.Inject;
 import javax.transaction.Transactional;
 import javax.validation.ConstraintViolation;
 import javax.validation.Validator;
-import javax.ws.rs.NotFoundException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -91,9 +90,9 @@ public class CarroService {
     private Carro findByPlaca(String placa) {
     	Carro carro = dao.findByPlaca(placa);
 		
-		if(carro == null) {
+		/*if(carro == null) {
 			throw new NotFoundException();
-		}
+		}*/
 		
 		return carro;
 	}
@@ -102,10 +101,13 @@ public class CarroService {
 		return CarroParser.get().dto(findByPlaca(placa));
 	}
 
-	public boolean excluir(String placa) {
-		findByPlaca(placa); // Se não existir o carro, será lançada uma exceção
+	//public boolean excluir(String placa) {
+	public String excluir(String placa) {
+		if (findByPlaca(placa) == null) {
+			return "Carro não localizado no banco de dados!";
+		}
 		
-		return dao.excluir(placa);
+		return dao.excluir(placa) ? "" : "Ocorreu um erro ao tentar excluir registro! Tente novamente.";
 	}
 	
 	public List<String> validateDto(CarroDto dto) {

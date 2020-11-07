@@ -169,15 +169,31 @@ public class CarroRest {
 			schema = @Schema(implementation = CarroDto.class))
 			}
 	)
-	public Response deleteTodoList(@PathParam("placa") String placa) {
-		if (service.excluir(placa)) {
+	public Response excluirCarro(@PathParam("placa") String placa) {
+    	
+    	String retornoErro = service.excluir(placa);
+    	
+    	if (!retornoErro.isEmpty()) {
+			String msg = "{"
+					+ "\"error\": \"true\","
+					+ "\"message\": \"" + retornoErro + "\""
+							+ "}";
+			
+			if (retornoErro.contains("localizado")) {
+				return Response
+						.status(Status.BAD_REQUEST)
+						.entity(msg)
+						.build();
+			}
+			
 			return Response
-					.status(Status.NO_CONTENT)
-					.build();
+    				.status(Status.INTERNAL_SERVER_ERROR)
+    				.build();
+			
 		}
-		
-		return Response
-				.status(Status.INTERNAL_SERVER_ERROR)
+    	
+    	return Response
+				.status(Status.NO_CONTENT)
 				.build();
 	}
 
