@@ -11,7 +11,6 @@ import javax.inject.Inject;
 import javax.transaction.Transactional;
 import javax.validation.ConstraintViolation;
 import javax.validation.Validator;
-import javax.ws.rs.NotFoundException;
 
 import br.com.stefanini.maratonadev.dao.AluguelDao;
 import br.com.stefanini.maratonadev.dto.AluguelDto;
@@ -69,12 +68,12 @@ public class AluguelService {
 	}
 
 	@Transactional(rollbackOn = Exception.class)
-	public Boolean devolverVeiculo(Long idCliente) {
+	public String devolverVeiculo(Long idCliente) {
 		Aluguel al = dao.findByClienteId(idCliente);
 		
 		// Verifica se o cliente existe
 		if (al == null) {
-			throw new NotFoundException();
+			return "Aluguel não encontrado!";
 		}
 		
 		// Retorna o histórico que não tem data de devolução
@@ -85,10 +84,11 @@ public class AluguelService {
 		Integer qtdRegistroAtualizado = dao.atualizarHistorico(historico); // Atualiza a data de devolução
 		
 		if (qtdRegistroAtualizado != 1) {
-			return false;
+			return "Ocorreu um erro ao tentar atualizar registro! Tente novamente.";
 		}
 		
-		return dao.devolverVeiculo(al.getId()); // Remove do BD o registro
+		// Remove do BD o registro
+		return dao.devolverVeiculo(al.getId()) ? "" : "Ocorreu um erro ao tentar devolver o veículo! Tente novamente.";
 	}
 	
 	public List<String> validateDto(AluguelDto dto) {

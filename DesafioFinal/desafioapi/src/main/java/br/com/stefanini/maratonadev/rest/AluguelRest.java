@@ -128,10 +128,24 @@ public class AluguelRest {
 					.build();
 		}
 		
-		if (!service.devolverVeiculo(dto.getClienteId())) {
+		String retornoErro = service.devolverVeiculo(dto.getClienteId()); 
+		
+		if (!retornoErro.isEmpty()) {
+			String msg = "{"
+					+ "\"error\": \"true\","
+					+ "\"message\": \"" + retornoErro + "\""
+							+ "}";
+			
+			if (retornoErro.contains("não encontrado")) {
+				return Response
+						.status(Status.BAD_REQUEST)
+						.entity(msg)
+						.build();
+			}
+			
 			return Response
 					.status(Status.INTERNAL_SERVER_ERROR)
-					.entity("{\"error\": \"Ocorreu um erro ao tentar devolver o veículo!\"}")
+					.entity(msg)
 					.build();
 		}
 		

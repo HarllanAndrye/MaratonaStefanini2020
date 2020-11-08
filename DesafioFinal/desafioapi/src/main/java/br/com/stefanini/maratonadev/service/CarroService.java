@@ -79,7 +79,7 @@ public class CarroService {
 	public void atualizar(String placa, CarroDto dto) {
     	Carro carro = CarroParser.get().entity(dto);
 		
-    	Carro carroBD = findByPlaca(placa); // Carro encontrado no banco de dados
+    	Carro carroBD = dao.findByPlaca(placa); // Carro encontrado no banco de dados
     	carroBD.setAno(carro.getAno());
     	carroBD.setMarca(carro.getMarca());
     	carroBD.setModelo(carro.getModelo());
@@ -87,23 +87,12 @@ public class CarroService {
 		dao.atualizar(carroBD); // Inserindo a alteração no BD
 	}
     
-    private Carro findByPlaca(String placa) {
-    	Carro carro = dao.findByPlaca(placa);
-		
-		/*if(carro == null) {
-			throw new NotFoundException();
-		}*/
-		
-		return carro;
-	}
-
 	public CarroDto listarPorPlaca(String placa) {
-		return CarroParser.get().dto(findByPlaca(placa));
+		return CarroParser.get().dto(dao.findByPlaca(placa));
 	}
 
-	//public boolean excluir(String placa) {
 	public String excluir(String placa) {
-		if (findByPlaca(placa) == null) {
+		if (dao.findByPlaca(placa) == null) {
 			return "Carro não localizado no banco de dados!";
 		}
 		
