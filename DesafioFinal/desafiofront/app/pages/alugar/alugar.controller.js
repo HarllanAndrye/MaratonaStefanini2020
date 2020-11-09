@@ -8,7 +8,6 @@
 
     function alugarController(service, helper, $routeParams) {
         var vm = this;
-        /* ***************    INIT VARIÁVEIS    *********************************** */
 
         vm.listaClientes = [];
         vm.listaCarros = [];
@@ -39,7 +38,6 @@
         vm.listarClientes = listarCLientes;
         vm.listarCarros = listarCarros;
 
-        /* ***************    FUNÇÕES EXECUTADAS NA VIEW (HMTL)    **************** */
 
         function iniciar() {
             if ($routeParams.placa) {
@@ -83,8 +81,6 @@
             }
         }
 
-        /* ***************    FUNÇÕES INTERNAS    ******************************** */
-
         function listarCLientes() {
             return service.listarClientesSemAluguel()
                 .then(function (_listaClientes) {
@@ -98,7 +94,6 @@
                     vm.listaCarros = _listaCarros;
                 });
         }
-
     }
 
 })();

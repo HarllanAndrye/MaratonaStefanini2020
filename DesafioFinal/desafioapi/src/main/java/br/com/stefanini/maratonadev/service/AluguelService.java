@@ -13,6 +13,7 @@ import javax.validation.ConstraintViolation;
 import javax.validation.Validator;
 
 import br.com.stefanini.maratonadev.dao.AluguelDao;
+import br.com.stefanini.maratonadev.dao.CarroDao;
 import br.com.stefanini.maratonadev.dto.AluguelDto;
 import br.com.stefanini.maratonadev.dto.HistoricoAluguelDto;
 import br.com.stefanini.maratonadev.model.Aluguel;
@@ -25,6 +26,9 @@ public class AluguelService {
 	
 	@Inject
 	AluguelDao dao;
+	
+	@Inject
+	CarroDao carroDao;
 	
 	@Inject
 	Validator validator;
@@ -56,6 +60,9 @@ public class AluguelService {
 		
 		dao.cadastrarAluguelEHistorico(al, historico);
 		
+		// Atualizar status do carro
+		carroDao.atualizarStatus(al.getPlacaCarro(), false);
+		
 		return "";
 	}
 
@@ -86,6 +93,9 @@ public class AluguelService {
 		if (qtdRegistroAtualizado != 1) {
 			return "Ocorreu um erro ao tentar atualizar registro! Tente novamente.";
 		}
+		
+		// Atualizar status do carro
+		carroDao.atualizarStatus(al.getPlacaCarro(), true);
 		
 		// Remove do BD o registro
 		return dao.devolverVeiculo(al.getId()) ? "" : "Ocorreu um erro ao tentar devolver o veículo! Tente novamente.";

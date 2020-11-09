@@ -6,7 +6,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "carro")
-public class Carro   extends PanacheEntityBase {
+public class Carro extends PanacheEntityBase {
 	
     @Id
     private String placa;
@@ -19,6 +19,9 @@ public class Carro   extends PanacheEntityBase {
 
     @Column(name = "marca", length = 100, nullable = false)
     private String marca;
+    
+    @Column(name = "disponivel", nullable = false)
+    private Boolean disponivel;
     
 
     public String getPlaca() {
@@ -53,4 +56,12 @@ public class Carro   extends PanacheEntityBase {
         this.marca = marca;
     }
 
+	public Boolean getDisponivel() {
+		return disponivel;
+	}
+
+	public void setDisponivel(Boolean disponivel) {
+		this.disponivel = disponivel;
+	}
+    
 }

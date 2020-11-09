@@ -81,13 +81,13 @@ Para cada cliente, aplicar as seguintes regras:
 
 ## Desafio bônus de implementação
 
-- [ ] Teste de unidade no front-end e back-end com 100% de cobertura.
+:star: Teste de unidade no front-end e back-end com 100% de cobertura.
 
-- [ ] Evoluir a funcionalidade de "listar carros" para diferenciar carros disponíveis dos carros alugados e exibir o atual locatário.
+:star: :star: Evoluir a funcionalidade de "listar carros" para diferenciar carros disponíveis dos carros alugados e exibir o atual locatário.
 
-- [ ] Evoluir a funcionalidade de "listar clientes" para indicar se ele tem um carro alugado e qual modelo.
+:star: :star: :star: Evoluir a funcionalidade de "listar clientes" para indicar se ele tem um carro alugado e qual modelo.
 
-- [x] Criar a funcionalidade "exibir histórico do cliente" e apresentar o histórico de todos os carros que o cliente já alugou.
+:star: :star: :star: :star: Criar a funcionalidade "exibir histórico do cliente" e apresentar o histórico de todos os carros que o cliente já alugou.
 
 
 

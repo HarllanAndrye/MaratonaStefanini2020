@@ -10,6 +10,7 @@
 
         return {
             listar: listar,
+            listarComPaginacao: listarComPaginacao,
             listarCarrosDisponiveis: listarCarrosDisponiveis,
             getCarro: getCarro,
             cadastrarCarro: cadastrarCarro,
@@ -28,6 +29,14 @@
 
         function listar() {
             return $http.get(constantes.URL_BASE + '/carro')
+                .then(function (response) {
+                    return response.data;
+                })
+                .catch(helper.sendError);
+        }
+
+        function listarComPaginacao(params) {
+            return $http.get(constantes.URL_BASE + '/carro/' + params.page + '/' + params.size)
                 .then(function (response) {
                     return response.data;
                 })

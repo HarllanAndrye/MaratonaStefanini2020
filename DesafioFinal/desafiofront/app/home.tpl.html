@@ -8,12 +8,16 @@
 
     <div class="mt-5"></div>
 
-    <button type="button" class="btn btn-outline-primary float-right" ng-click="vm.go('/carro/cadastro')">Cadastrar carro</button>
+    <button type="button" class="btn btn-outline-primary float-right" ng-click="vm.go('/carro/cadastro')">Cadastrar
+        carro</button>
     <h2>Nosso Catálogo</h2>
     <hr class="mt-1 bg-primary">
-    <div class="row">
-        <div class="col-4" ng-repeat="carro in vm.listaCarros track by $index">
-            <div class="card mb-4" style="width: 18rem;">
+
+    <div class="card-deck">
+        <!--row-->
+        <div class="col-sm-4" ng-repeat="carro in vm.listaCarros track by $index">
+            <div class="card mb-4 text-center">
+                <!--style="width: 18rem;"-->
                 <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
                 <div class="card-body">
                     <h5 class="card-title">
@@ -26,9 +30,21 @@
                         <strong>Ano: </strong> {{carro.ano}} &nbsp; | &nbsp;
                         <strong>Placa: </strong> {{carro.placa | placaComHifen}}
                     </p>
-                    <a ng-click="vm.alugarCarro(carro.placa)" class="btn btn-primary text-center">Alugar</a>
+                    <span ng-if="!carro.disponivel" class="badge badge-pill badge-warning">Alugado</span>
+                    <a ng-click="vm.alugarCarro(carro.placa)" ng-if="carro.disponivel"
+                        class="btn btn-primary text-center">Alugar</a>
                 </div>
             </div>
         </div>
     </div>
+
+    <!-- Paginação  -->
+    <div class="text-center">
+        <ul uib-pagination total-items="vm.totalItems" ng-model="vm.currentPage" max-size="vm.maxSize" class="pagination-sm"
+            boundary-links="true" force-ellipses="true" items-per-page="vm.itemsPerPage" last-text="{{vm.lastText}}" 
+            first-text="{{vm.firstText}}" next-text="{{vm.nextText}}" previous-text="{{vm.previousText}}"
+            ng-change="vm.pageChanged()">
+        </ul>
+    </div>
+
 </div>

@@ -17,6 +17,8 @@ public class CarroDto {
 
     @NotEmpty(message = "A marca do veículo é obrigatória.")
     private String marca;
+    
+    private Boolean disponivel;
 
     public String getPlaca() {
         return placa;
@@ -49,4 +51,24 @@ public class CarroDto {
     public void setMarca(String marca) {
         this.marca = marca;
     }
+
+	public Boolean getDisponivel() {
+		return disponivel;
+	}
+
+	public void setDisponivel(Boolean disponivel) {
+		this.disponivel = disponivel;
+	}
+
+	@Override
+	public String toString() {
+		return "\r\n{\r\n \"ano\": " + ano + 
+				",\r\n \"placa\": " + placa + 
+				",\r\n \"modelo\": " + modelo + 
+				",\r\n \"marca\": " + marca + 
+				",\r\n \"disponivel\": " + disponivel + "\r\n}";
+	}
+	
+	
+        
 }

@@ -8,12 +8,6 @@
 
     function alertasController() {
         var vm = this;
-        /* ***************    INIT VARIÁVEIS    *********************************** */
-
-        /* ***************    FUNÇÕES EXECUTADAS NA VIEW (HMTL)    **************** */
-
-        /* ***************    FUNÇÕES INSTERNAS    ******************************** */
-
     }
 
 })();

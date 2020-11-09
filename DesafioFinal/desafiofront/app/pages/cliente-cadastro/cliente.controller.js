@@ -8,7 +8,6 @@
 
     function clienteController(autoLocadoraService, helper, $http) {
         var vm = this;
-        /* ***************    INIT VARIÁVEIS    *********************************** */
 
         vm.enviarDadosCliente = enviarDadosCliente;
         vm.consultaCEP = consultaCEP;
@@ -19,12 +18,10 @@
                 vm.estados = response.data;
             });
 
-
-        /* ***************    FUNÇÕES EXECUTADAS NA VIEW (HMTL)    **************** */
         function enviarDadosCliente() {
             return autoLocadoraService.cadastrarCliente(vm.form)
-                    .then(response);
-    
+                .then(response);
+
             function response(data) {
                 if (data.status == 400) {
                     helper.addAlerta(data.data.error, 'warning', '');
@@ -38,12 +35,10 @@
 
         function consultaCEP() {
             if (typeof vm.form != 'undefined' && typeof vm.form.endereco.cep != 'undefined') {
-                //console.log(vm.form.endereco.cep);
                 return autoLocadoraService.consultaCEP(vm.form.endereco.cep)
                     .then(response);
 
                 function response(data) {
-                    //console.log(data);
                     vm.form.endereco.logradouro = data.logradouro;
                     vm.form.endereco.complemento = data.complemento;
                     vm.form.endereco.bairro = data.bairro;
@@ -52,10 +47,6 @@
                 }
             }
         }
-
-        /* ***************    FUNÇÕES INSTERNAS    ******************************** */
-
-
     }
 
 })();

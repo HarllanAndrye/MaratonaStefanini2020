@@ -1,6 +1,7 @@
 package br.com.stefanini.maratonadev.rest;
 
 import br.com.stefanini.maratonadev.dto.CarroDto;
+import br.com.stefanini.maratonadev.dto.PaginationDto;
 import br.com.stefanini.maratonadev.service.CarroService;
 import org.eclipse.microprofile.openapi.annotations.Operation;
 import org.eclipse.microprofile.openapi.annotations.enums.SchemaType;
@@ -33,7 +34,7 @@ public class CarroRest {
 
     @GET
     @Operation(summary = "Listar carros",
-            description = "Lista de carros com ano de compra, marca,modelo e placa")
+            description = "Lista de carros com ano de compra, marca, modelo e placa.")
     @APIResponse(responseCode = "200",
             description = "carro",
             content = {
@@ -45,6 +46,28 @@ public class CarroRest {
         return Response
                 .status(Response.Status.OK)
                 .entity(service.listar())
+                .build();
+    }
+    
+    @GET
+    @Path("{page}/{size}")
+    @Operation(summary = "Listar carros",
+            description = "Lista de carros com ano de compra, marca, modelo e placa. Uso de paginação.")
+    @APIResponse(responseCode = "200",
+            description = "carro",
+            content = {
+                    @Content(mediaType =  "application/json",
+                            schema = @Schema(implementation = PaginationDto.class))
+            }
+    )
+    public Response listarComPaginacao(@PathParam("page") Integer page, @PathParam("size") Integer size){
+    	PaginationDto pagination = new PaginationDto();
+    	pagination.setCarros(service.listarComPaginação(page, size));
+    	pagination.setPagination(service.quantidadeDeItensNoBd(), page, size);
+    	
+        return Response
+                .status(Response.Status.OK)
+                .entity(pagination)
                 .build();
     }
     
@@ -103,7 +126,6 @@ public class CarroRest {
 					+ "\"message\": \"" + errors.get(0) + "\""
 							+ "}";
 			
-			//.entity("{\"error\": \"" + errors.get(0) + "\"}")
 			return Response
 					.status(Status.BAD_REQUEST)
 					.entity(msg)
@@ -124,7 +146,6 @@ public class CarroRest {
 					.build();
 		}
 		
-		//.entity("Carro cadastrado com sucesso.")
 		return Response
 				.status(Status.CREATED)
 				.build();

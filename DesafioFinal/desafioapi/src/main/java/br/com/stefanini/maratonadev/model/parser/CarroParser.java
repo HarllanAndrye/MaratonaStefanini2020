@@ -3,11 +3,6 @@ package br.com.stefanini.maratonadev.model.parser;
 import br.com.stefanini.maratonadev.dto.CarroDto;
 import br.com.stefanini.maratonadev.model.Carro;
 
-/**
- * @author danilodorgam
- * @version 0.1.0
- * @created 29/10/2020 on 18:33
- */
 public class CarroParser {
 
     public static CarroParser get(){
@@ -21,6 +16,7 @@ public class CarroParser {
         dto.setAno(entidade.getAno());
         dto.setModelo(entidade.getModelo());
         dto.setMarca(entidade.getMarca());
+        dto.setDisponivel(entidade.getDisponivel());
         return dto;
     }
     
@@ -31,6 +27,7 @@ public class CarroParser {
     	entity.setAno(dto.getAno());
     	entity.setModelo(dto.getModelo());
     	entity.setMarca(dto.getMarca());
+    	entity.setDisponivel(dto.getDisponivel());
 		
 		return entity;
 	}

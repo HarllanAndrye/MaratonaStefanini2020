@@ -38,6 +38,17 @@ public class CarroService {
         		.collect(Collectors.toList());
     }
     
+    public List<CarroDto> listarComPaginação(Integer page, Integer size){
+        return dao.listarComPaginacao(page, size)
+        		.stream()
+        		.map(CarroParser.get()::dto)
+        		.collect(Collectors.toList());
+    }
+    
+    public Long quantidadeDeItensNoBd() {
+    	return dao.quantidadeDeItensNoBd();
+    }
+    
     public List<CarroDto> listarDisponiveis() {
     	List<String> placas = new ArrayList<>();
 		
@@ -55,6 +66,7 @@ public class CarroService {
     @Transactional(rollbackOn = Exception.class)
 	public String incluir(CarroDto dto) {
 		Carro carro = CarroParser.get().entity(dto);
+		carro.setDisponivel(true);
 		
 		String retorno = "";
 		
