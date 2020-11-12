@@ -1,5 +1,5 @@
 (function () {
-    "use strict";
+    "'use strict';\n";
 
     angular.module('autoLocadoraApp')
         .controller('ClienteController', clienteController);

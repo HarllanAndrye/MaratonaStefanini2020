@@ -1,5 +1,5 @@
 (function () {
-    "use strict";
+    "'use strict';\n";
 
     angular.module('autoLocadoraApp')
         .controller('AlugarController', alugarController);
@@ -24,7 +24,7 @@
                 "text": "dia"
             }
         ];
-        for (let index = 2; index <= 31; index++) {
+        for (var index = 2; index <= 31; index++) {
             vm.qtdDias.push(
                 {
                     "number": index,
@@ -35,13 +35,13 @@
 
         vm.iniciar = iniciar;
         vm.enviarDadosAluguel = enviarDadosAluguel;
-        vm.listarClientes = listarCLientes;
+        vm.clientesSemAluguel = clientesSemAluguel;
         vm.listarCarros = listarCarros;
 
 
         function iniciar() {
             if ($routeParams.placa) {
-                listarCLientes();
+                clientesSemAluguel();
 
                 return service.getCarro($routeParams.placa)
                     .then(function (_carro) {
@@ -61,7 +61,7 @@
                         vm.form.clienteId = _cliente.id.toString();
                     });
             } else {
-                listarCLientes();
+                clientesSemAluguel();
                 listarCarros();
             }
         }
@@ -81,7 +81,7 @@
             }
         }
 
-        function listarCLientes() {
+        function clientesSemAluguel() {
             return service.listarClientesSemAluguel()
                 .then(function (_listaClientes) {
                     vm.listaClientes = _listaClientes;

@@ -53,7 +53,8 @@
         }
 
         function alugarCarro(placa) {
-            helper.go('/alugar/carro/' + placa);
+            //helper.go('/alugar/carro/' + placa);
+            vm.go('/alugar/carro/' + placa);
         }
     }
 

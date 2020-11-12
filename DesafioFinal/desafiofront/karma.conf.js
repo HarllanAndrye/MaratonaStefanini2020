@@ -16,6 +16,7 @@ function configKarma(config) {
             require('karma-jasmine'),
             require('karma-coverage'),
             require('karma-phantomjs-launcher'),
+            //require('karma-chrome-launcher'),
         ],
 
         // list of files / patterns to load in the browser
@@ -25,9 +26,13 @@ function configKarma(config) {
             { pattern: 'node_modules/angular/angular.js', watched: false },
             { pattern: 'node_modules/angular-route/angular-route.js', watched: false },
             { pattern: 'node_modules/angular-mocks/angular-mocks.js', watched: false },
+            { pattern: 'node_modules/angular-input-masks/releases/angular-input-masks-standalone.min.js', watched: false },
+            { pattern: 'node_modules/angular-ui-bootstrap/dist/ui-bootstrap.js', watched: false },
+            { pattern: 'node_modules/angular-ui-bootstrap/dist/ui-bootstrap-tpls.js', watched: false },
             { pattern: 'node_modules/phantomjs-polyfill/bind-polyfill.js', watched: false },
             { pattern: 'node_modules/promise-polyfill/dist/polyfill.js', watched: false },
-            // { pattern: 'node_modules/@babel/polyfill/dist/polyfill.js', watched: false },
+            //{ pattern: 'node_modules/@babel/dist/polyfill.js', watched: false },
+            { pattern: 'node_modules/@babel/polyfill/dist/polyfill.js', watched: false },
             'spec/**/*_init-spec.js',
             'spec/**/*_spec.js',
 
