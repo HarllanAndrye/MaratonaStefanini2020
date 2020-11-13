@@ -8,7 +8,6 @@ import org.junit.jupiter.api.TestMethodOrder;
 import static io.restassured.RestAssured.given;
 import io.restassured.http.ContentType;
 
-import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.anyOf;
 import static org.hamcrest.CoreMatchers.containsString;
 
@@ -34,7 +33,7 @@ public class CarroRestTest {
 	@Order(2)
 	@Test
 	public void listarPorPlacaTest() {
-		String returnIs = "{\"ano\":1990,\"marca\":\"GM - Chevrolet\",\"modelo\":\"SONIC Sed. LTZ 1.6 16V FlexPower 4p Aut.\",\"placa\":\"BQW0877\"}";
+		//String returnIs = "{\"ano\":1990,\"marca\":\"GM - Chevrolet\",\"modelo\":\"SONIC Sed. LTZ 1.6 16V FlexPower 4p Aut.\",\"placa\":\"BQW0877\"}";
 		
 		given()
 			.when()
@@ -42,7 +41,7 @@ public class CarroRestTest {
 			.then()
 				.statusCode(200)
 				.contentType(ContentType.JSON)
-				.body(is(returnIs)); // anyOf(containsString("GM - Chevrolet"))
+				.body(anyOf(containsString("GM - Chevrolet"))); // is(returnIs)
 	}
 	
 	@Order(3)
