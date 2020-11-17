@@ -6,6 +6,8 @@
 :file_folder: todolist: Projeto que consiste em um serviço REST usando os métodos HTTP (GET, POST, PUT e DELETE).
 Este projeto é um "To Do List", onde há tarefas com status TODO, DOING, DONE e BLOCK. Pode ser utilizado com um front-end tipo o Trello.
 
+:paperclip: O projeto completo (front e back-end) pode ser encontrado [aqui](https://github.com/HarllanAndrye/ToDoList). :+1:
+
 ---
 
 Assuntos tratados na semana:
